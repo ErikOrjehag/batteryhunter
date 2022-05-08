@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "auto",
+            "type": "auto-debug",
+            "request": "launch",
+            "map": {
+                "*.py": "Python: Current File",
+                "*.cpp": "(gdb) Launch map_node"
+            }
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+        },
+        {
+        "name": "(gdb) Launch map_node",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/../../install/lib/bh_map/map_node",
+        "args": [],
+        "preLaunchTask": "build",
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+            }
+        ]
+        }
+    ]
+}
