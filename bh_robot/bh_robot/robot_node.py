@@ -16,8 +16,8 @@ def main():
     executor = rclpy.executors.SingleThreadedExecutor()
     executor.add_node(node)
     
-    client: rclpy.client.Client = node.create_client(bh_msgs.srv.SampleMap, "/sample_map")
-
+    client: rclpy.client.Client = node.create_client(
+        bh_msgs.srv.SampleMap, "/sample_map")
     while not client.wait_for_service(timeout_sec=1.0):
         node.get_logger().info("Service not available, waiting...")
 
@@ -41,7 +41,7 @@ def main():
                 return bh_msgs.action.Simulate.Result(result="Dead!", length=step)
             elif value == "outside":
                 goal_handle.abort()
-                return bh_msgs.action.Simulate.Result(result="Robot left map!", length=step)
+                return bh_msgs.action.Simulate.Result(result="Outside!", length=step)
             elif value == ">":
                 col += 1
             elif value == "<":
@@ -50,15 +50,13 @@ def main():
                 row -= 1
             elif value == "v":
                 row += 1
-            goal_handle.publish_feedback(bh_msgs.action.Simulate.Feedback(value=value, step=step))
+            goal_handle.publish_feedback(bh_msgs.action.Simulate.Feedback(
+                value=value, step=step))
             step += 1
             time.sleep(0.1)
 
-    rclpy.action.ActionServer(
-        node,
-        bh_msgs.action.Simulate,
-        '/simulate',
-        execute_callback)
+    rclpy.action.ActionServer(node, bh_msgs.action.Simulate, '/simulate',
+                              execute_callback)
 
     executor.spin()
 
