@@ -4,34 +4,38 @@
   "workspaceFolder": "/home/ros/ws/src/batteryhunter",
   "build": {
     "dockerfile": "../Dockerfile",
-    "context": "..",
+    "context": ".."
   },
     "remoteUser": "ros",
     "runArgs": [
       "--privileged",
-      "--network=host",
+      "--network=host"
     ],
-    "settings": {
-      "terminal.integrated.defaultProfile.linux": "bash",
-      "terminal.integrated.profiles.linux": {
-        "bash": {
-            "path": "/bin/bash"
-        }
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash",
+          "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "/bin/bash"
+            }
+          }
+        },
+        "extensions": [
+          "DarrenLevine.auto-debug",
+          "dotjoshjohnson.xml",
+          "ms-azuretools.vscode-docker",
+          "ms-iot.vscode-ros",
+          "ms-python.python",
+          "ms-vscode.cpptools",
+          "redhat.vscode-yaml",
+          "smilerobotics.urdf",
+          "streetsidesoftware.code-spell-checker",
+          "twxs.cmake",
+          "yzhang.markdown-all-in-one",
+          "eamodio.gitlens",
+          "njpwerner.autodocstring"
+        ]
       }
-    },
-    "extensions": [
-      "DarrenLevine.auto-debug",
-      "dotjoshjohnson.xml",
-      "ms-azuretools.vscode-docker",
-      "ms-iot.vscode-ros",
-      "ms-python.python",
-      "ms-vscode.cpptools",
-      "redhat.vscode-yaml",
-      "smilerobotics.urdf",
-      "streetsidesoftware.code-spell-checker",
-      "twxs.cmake",
-      "yzhang.markdown-all-in-one",
-      "eamodio.gitlens",
-      "njpwerner.autodocstring"
-    ]
+    }
 }
